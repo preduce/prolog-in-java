@@ -5,8 +5,8 @@ Prolog mechanisms combined in java library.
 ## Quick start
 
 Options of quick start are available
-*[Download tar archive]{http://archive.org}
-*Clone the repo
+  1. [Download tar archive](http://archive.org)
+  1. Clone the repo
 
 ## Description
 
@@ -14,7 +14,7 @@ Description of Prolog in Java goes here
 
 ## Example
 
-`
+```java
     Prolog<String> p = new Prolog<String>();
 
     p.add(["Member",["A","B"],"A"]);
@@ -23,18 +23,14 @@ Description of Prolog in Java goes here
     Anwser<String> ans = p.ask(["Member", [1,2,3,4,5],"X"]);
 
     while(ans.hasNext()) {
-      System.out.println(ans.next());
+      System.out.print(ans.next());
+      System.out.print(", ");
     }
-`
+```
 
 Will resut
 
-"1
-2
-3
-4
-5
-"
+`1, 2, 3, 4, 5, `
 
 ## Installation
 
