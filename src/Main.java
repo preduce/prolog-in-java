@@ -1,24 +1,22 @@
-import java.util.List;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.Map;
 
 
 
 public class Main {
 
 	public static void main(String [ ] args){
-		System.out.println("asdf");
-		List<Integer> s = new LinkedList<Integer>();
-		s.add(10);
-		s.add(20);
-		s.add(30);
-		Iterator<Integer> it = s.iterator();
+		Prolog<Character> p = new Prolog<Character>();
 		
-		System.out.println(it.next());
-		System.out.println(it.next());
-		it.next();
-		it.next();
+		p.add(Term.t("F", 1));
+		p.add(Term.t("F", 2));
+		p.add(Term.t("F", 'X')).impl(Term.t("G",'X'))._(Term.t("H",'X'));
+		p.add(Term.t("G", 10));
+		p.add(Term.t("H", 10));
+		
+		Iterator<Map<Character, Object>> it = p.ask(Term.t());
+		while(it.hasNext()) {
+			System.out.println(it.next().toString());
+		}
 	}
 }

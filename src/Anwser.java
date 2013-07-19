@@ -4,10 +4,13 @@ import java.util.NoSuchElementException;
 
 public class Anwser<V> implements Iterator<Map<V,Object>> {
 	private Prolog<V> program;
-	private Map<V,Object> nextAnwser;
+	private Term question;
+	private Environment<V> nextAnwser;
 	private boolean isNextAnwser;
 	private boolean endOfProgram;
-	Anwser(Prolog<V> program) {
+	
+	Anwser(Prolog<V> program, Term question) {
+		this.question = question;
 		this.program = program;
 		nextAnwser = null;
 		isNextAnwser = false;
@@ -32,15 +35,18 @@ public class Anwser<V> implements Iterator<Map<V,Object>> {
 	}
 
 	@Override
-	public Map<V,Object> next() {
+	public Environment<V> next() {
 		// Avoid computing anwser twice for hasNext
 		// and Next();
+		Environment<V> ret = new Environment<V>();
+		/*
 		if(isNextAnwser)
 			return nextAnwser;
 		isNextAnwser = false;
 		if(!computeAnwser())
 			throw new NoSuchElementException();
 		return nextAnwser;
+		*/
 	}
 
 	@Override

@@ -1,23 +1,20 @@
-import java.lang.reflect.Array;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map;
 
 
 public class Prolog<Variable> {
-	private LinkedList<Clause> clauses;
+	private LinkedList<Clause<Variable>> clauses;
 	
 	Prolog() {
-		this.clauses = new LinkedList<Clause>();
+		this.clauses = new LinkedList<Clause<Variable>>();
 	}
 	
-	public Clause add(Array term) {
-		Clause single = new Clause(term);
+	public Clause<Variable> add(Term objects) {
+		Clause<Variable> single = new Clause<Variable>(this, objects);
 		clauses.add(single);
 		return single;
 	}
 	
-	public Iterator<Map<Variable, Object>> ask() {
-		throw new UnsupportedOperationException();
+	public Anwser<Variable> ask(Term question) {
+		return new Anwser<Variable>(this, question);
 	}
 }

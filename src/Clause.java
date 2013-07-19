@@ -1,25 +1,26 @@
 import java.util.LinkedList;
 import java.util.List;
-import java.lang.reflect.Array;
 
-public class Clause {
-	private Array leftTerm;
-	private List<Array> rightTerm;
-	Clause(Array term) {
-		leftTerm = term;
-		rightTerm = new LinkedList<Array>();
+public class Clause<V> {
+	private Prolog<V> program;
+	private Term leftTerm;
+	private List<Term> rightTerm;
+	Clause(Prolog<V> program, Term objects) {
+		this.program = program;
+		leftTerm = objects;
+		rightTerm = new LinkedList<Term>();
 	}
 	
 	private boolean isSingleClause() {
 		return rightTerm.isEmpty();
 	}
 	
-	public Clause impl(Array term) {
+	public Clause<V> impl(Term term) {
 		rightTerm.add(term);
 		return this;
 	}
 	
-	public Clause _(Array term) {
+	public Clause<V> _(Term term) {
 		rightTerm.add(term);
 		return this;
 	}
