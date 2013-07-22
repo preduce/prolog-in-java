@@ -1,5 +1,7 @@
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class Clause<V> {
 	private Prolog<V> program;
@@ -23,5 +25,9 @@ public class Clause<V> {
 	public Clause<V> _(Term term) {
 		rightTerm.add(term);
 		return this;
+	}
+	Iterator<Map<V,Object>> match(Term t) {
+		// TODO
+		return program.ask(t);
 	}
 }

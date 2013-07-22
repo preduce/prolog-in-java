@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.LinkedList;
 
 
@@ -16,5 +17,8 @@ public class Prolog<Variable> {
 	
 	public Anwser<Variable> ask(Term question) {
 		return new Anwser<Variable>(this, question);
+	}
+	Iterator<Clause<Variable>> getIteratorator(){
+		return clauses.iterator();
 	}
 }
