@@ -1,9 +1,9 @@
 
-public class Term {
+public class Term<V> {
 	private Object[] array;
 	
-	public Environment<Object> unify(Term term1, Term term2, Environment<Object> env) {
-		return env;
+	public Environment<V> unify(Term<V> term, Environment<V> env) {
+		return  env;
 	}
 	
 	public Object[] getObjectArray(){

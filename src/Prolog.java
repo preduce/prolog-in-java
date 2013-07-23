@@ -2,23 +2,23 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 
-public class Prolog<Variable> {
-	private LinkedList<Clause<Variable>> clauses;
+public class Prolog<V> {
+	private LinkedList<Clause<V>> clauses;
 	
 	Prolog() {
-		this.clauses = new LinkedList<Clause<Variable>>();
+		this.clauses = new LinkedList<Clause<V>>();
 	}
 	
-	public Clause<Variable> add(Term objects) {
-		Clause<Variable> single = new Clause<Variable>(this, objects);
+	public Clause<V> add(Term<V> objects) {
+		Clause<V> single = new Clause<V>(this, objects);
 		clauses.add(single);
 		return single;
 	}
 	
-	public Anwser<Variable> ask(Term question) {
-		return new Anwser<Variable>(this, question);
+	public Anwser<V> ask(Term<V> question) {
+		return (new Anwser<V>(this)).add_question(question);
 	}
-	Iterator<Clause<Variable>> getIteratorator(){
+	Iterator<Clause<V>> getIteratorator(){
 		return clauses.iterator();
 	}
 }
